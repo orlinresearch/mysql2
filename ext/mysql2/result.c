@@ -146,7 +146,7 @@ static VALUE mysql2_set_field_string_encoding(VALUE val, MYSQL_FIELD field, rb_e
   } else {
 	
 	// assume the encoding is internal encoding
-	rb_enc_associate(val, default_internal_enc);
+	rb_enc_associate(val, conn_enc);
 	return;
 	
     // // lookup the encoding configured on this field
