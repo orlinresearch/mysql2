@@ -145,9 +145,6 @@ static VALUE mysql2_set_field_string_encoding(VALUE val, MYSQL_FIELD field, rb_e
     rb_enc_associate(val, binaryEncoding);
   } else {
 	
-	// assume the encoding is internal encoding
-	rb_enc_associate(val, conn_enc);
-
     // // lookup the encoding configured on this field
     // VALUE new_encoding = rb_funcall(cMysql2Client, intern_encoding_from_charset_code, 1, INT2NUM(field.charsetnr));
     // if (new_encoding != Qnil) {
@@ -155,8 +152,8 @@ static VALUE mysql2_set_field_string_encoding(VALUE val, MYSQL_FIELD field, rb_e
     //   rb_encoding *enc = rb_to_encoding(new_encoding);
     //   rb_enc_associate(val, enc);
     // } else {
-    //   // otherwise fall-back to the connection's encoding
-    //   rb_enc_associate(val, conn_enc);
+      // otherwise fall-back to the connection's encoding
+      rb_enc_associate(val, conn_enc);
     // }
     // if (default_internal_enc) {
     //   val = rb_str_export_to_enc(val, default_internal_enc);
