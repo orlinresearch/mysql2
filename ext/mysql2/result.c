@@ -147,8 +147,7 @@ static VALUE mysql2_set_field_string_encoding(VALUE val, MYSQL_FIELD field, rb_e
 	
 	// assume the encoding is internal encoding
 	rb_enc_associate(val, conn_enc);
-	return;
-	
+
     // // lookup the encoding configured on this field
     // VALUE new_encoding = rb_funcall(cMysql2Client, intern_encoding_from_charset_code, 1, INT2NUM(field.charsetnr));
     // if (new_encoding != Qnil) {
